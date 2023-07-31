@@ -104,15 +104,15 @@ Os testes de pacto têm algumas propriedades importantes. Demonstraremos um exem
   ```sh
   import { PactV3, MatchersV3 } from '@pact-foundation/pact';
 
-  // Create a 'pact' between the two applications in the integration we are testing
+  // Criando um 'pacto' entre as duas aplicações na integração que estamos testando
   const provider = new PactV3({
     dir: path.resolve(process.cwd(), 'pacts'),
     consumer: 'MyConsumer',
     provider: 'MyProvider',
   });
 
-  // API Client that will fetch dogs from the Dog API
-  // This is the target of our Pact test
+  // API do cliente que buscará a API Dog
+  // Este é o alvo do nosso teste Pact
   public getMeDogs = (from: string): AxiosPromise => {
     return axios.request({
       baseURL: this.url,
@@ -128,9 +128,8 @@ Os testes de pacto têm algumas propriedades importantes. Demonstraremos um exem
 
   describe('GET /dogs', () => {
     it('returns an HTTP 200 and a list of docs', () => {
-      // Arrange: Setup our expected interactions
-      //
-      // We use Pact to mock out the backend API
+      // Configurando nossas interações esperadas e
+      // usando o Pact para simular a API de back-end
       provider
         .given('I have a list of dogs')
         .uponReceiving('a request for all dogs with the builder pattern')
@@ -147,11 +146,10 @@ Os testes de pacto têm algumas propriedades importantes. Demonstraremos um exem
         });
 
       return provider.executeTest((mockserver) => {
-        // Act: test our API client behaves correctly
-        //
-        // Note we configure the DogService API client dynamically to 
-        // point to the mock service Pact created for us, instead of 
-        // the real one
+        // Testando se nosso cliente API se comporta corretamente
+        // Observe que configuramos o cliente da API DogService dinamicamente para
+        // apontar para o pacto de serviço simulado criado anteriormente
+
         dogService = new DogService(mockserver.url);
         const response = await dogService.getMeDogs('today')
 
@@ -171,24 +169,24 @@ A principal interface do provedor é a classe Verifier do pacote @pact-foundatio
 ```
 const { Verifier } = require('@pact-foundation/pact');
 
-// (1) Start provider locally. Be sure to stub out any external dependencies
+// 1 - Iniciando o provedor localmente. Certifique-se de eliminar quaisquer dependências externas
 server.listen(8081, () => {
   importData();
-  console.log('Animal Profile Service listening on http://localhost:8081');
+  console.log('ouvindo o serviço de perfil do animal em http://localhost:8081');
 });
 
-// (2) Verify that the provider meets all consumer expectations
+// 2 - Verificando se o provedor atende a todas as expectativas do consumidor
 describe('Pact Verification', () => {
   it('validates the expectations of Matching Service', () => {
     let token = 'INVALID TOKEN';
 
     return new Verifier({
-      providerBaseUrl: 'http://localhost:8081', // <- location of your running provider
+      providerBaseUrl: 'http://localhost:8081', // <- localização do seu provedor em execução
       pactUrls: [ path.resolve(process.cwd(), "./pacts/SomeConsumer-SomeProvider.json") ],
     })
       .verifyProvider()
       .then(() => {
-        console.log('Pact Verification Complete!');
+        console.log('Verificação do Pacto Concluída com Sucesso!');
       });
   });
 });
