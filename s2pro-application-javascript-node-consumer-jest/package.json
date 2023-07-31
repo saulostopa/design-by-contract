@@ -1,0 +1,23 @@
+{
+  "name": "s2pro-application-jest-example",
+  "version": "1.0.0",
+  "description": "s2pro-application Pact example using Jest",
+  "main": "s2pro-application.js",
+  "scripts": {
+    "test": "rimraf pacts && jest __tests__/ --runInBand",
+    "test:publish": "node publish.js"
+  },
+  "license": "MIT",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "dependencies": {
+    "axios": "latest"
+  },
+  "devDependencies": {
+    "@pact-foundation/pact": "latest",
+    "jest": "latest",
+    "jest-pact": "latest",
+    "rimraf": "latest"
+  }
+}
