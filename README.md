@@ -1,23 +1,8 @@
-<div id="top"></div>
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+# Teste de contrato direcionado ao consumidor (DbC - Design by Contract)
 
 
+[![Architetura de testes de contrato][contract-testing]](https://github.com/saulostopa)
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/saulostopa">
-    <img src="images/contract_testing.png" alt="Design by Contract" width="280" height="280">
-  </a>
-
-  <h2 align="justify">Teste de contrato direcionado ao consumidor (DbC - Design by Contract)</h2>
-
-</div>
 
 ## Sumário
 <ul>
@@ -29,6 +14,8 @@
   <li><a href="#arquitetura-do-teste-de-contrato-com-pact-broker">Arquitetura do Teste de Contrato com Pact Broker</a></li>
   <li><a href="#mão-na-massa-com-pact">Mão na Massa com Pact</a></li>
   <li><a href="#teste-do-lado-do-consumidor">Teste do Lado do Consumidor</a></li>
+  <li><a href="#teste-do-lado-do-provedor">Teste do Lado do Provedor</a></li>
+  <li><a href="#conclusão">Conclusão</a></li>
 </ul>
 
 ## Introdução
@@ -95,9 +82,8 @@ A principal interface do consumidor são a classe PactV3 e as exportações Matc
 
 Neste exemplo, vamos testar nosso cliente User API, responsável por se comunicar com o UserAPI por HTTP. Atualmente, ele possui um único método GetUser(id) que retornará um *User*.
 
-Os testes de pacto têm algumas propriedades importantes. Demonstraremos um exemplo comum usando o padrão 3A Arrange/Act/Assert.
+Os testes de pacto têm algumas propriedades importantes conforme demonstrado abaixo.
 
-<p align="right">(<a href="#top">Topo ^</a>)</p>
 
 ### Teste do Lado do Consumidor
 
@@ -191,7 +177,7 @@ describe('Pact Verification', () => {
   });
 });
 ```
-
+<p align="right">(<a href="#top">Topo ^</a>)</p>
 
 ## Conclusão
 
@@ -215,18 +201,6 @@ WebSite: [https://saulostopa.com](https://saulostopa.com)
 <p align="right">(<a href="#top">Topo ^</a>)</p>
 
 
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
 [pact-flow]: images/pact-demand-flow.png
 [pact-flow-broker]: images/pact-demand-flow-broker.png
+[contract-testing]: images/contract_testing.png
